@@ -8,6 +8,10 @@ install:
 	@sudo cp whitelist.json /opt/minecraft-docker/
 	@sudo cp server.properties /opt/minecraft-docker/
 
+uninstall:
+	@sudo rm -rf /opt/docker-compose-service/minecraft-docker/
+	@sudo rm -rf /opt/minecraft-docker
+
 enable:
 	sudo systemctl enable docker-compose-service@minecraft-docker
 
