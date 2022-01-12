@@ -4,6 +4,7 @@ install:
 	@sudo mkdir -p /opt/docker-compose-service/minecraft-docker/
 	@sudo cp docker-compose.yml /opt/docker-compose-service/minecraft-docker/docker-compose.yml
 	@sudo cp systemd/docker-compose-service@.service  /etc/systemd/system/
+	@sudo mkdir -p /opt/minecraft-docker
 	@sudo cp whitelist.json /opt/minecraft-docker/
 	@sudo cp server.properties /opt/minecraft-docker/
 
