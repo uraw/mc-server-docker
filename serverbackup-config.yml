@@ -1,0 +1,27 @@
+# BackupTimer = At what time should a Backup be created? The format is: 'hh-mm' e.g. '12-30'.
+# DeleteOldBackups = Deletes old backups automatically after a specific time (in days, standard = 7 days)
+# DeleteOldBackups - Type '0' at DeleteOldBackups to disable the deletion of old backups.
+# BackupLimiter = Deletes old backups automatically if number of total backups is greater than this number (e.g. if you enter '5' - the oldest backup will be deleted if there are more than 5 backups, so you will always keep the latest 5 backups)
+# BackupLimiter - Type '0' to disable this feature. If you don't type '0' the feature 'DeleteOldBackups' will be disabled and this feature ('BackupLimiter') will be enabled.
+# KeepUniqueBackups - Type 'true' to disable the deletion of unique backups. The plugin will keep the newest backup of all backed up worlds or folders, no matter how old it is.
+
+AutomaticBackups: true
+BackupTimer:
+  Days:
+  - MONDAY
+  - TUESDAY
+  - WEDNESDAY
+  - THURSDAY
+  - FRIDAY
+  - SATURDAY
+  - SUNDAY
+  Times:
+  - 04-01
+BackupWorlds:
+- kitakata
+- kitakata_nether
+- kitakata_the_end
+DeleteOldBackups: 7
+BackupLimiter: 0
+KeepUniqueBackups: false
+SendLogMessages: false

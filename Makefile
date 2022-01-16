@@ -12,6 +12,9 @@ install:
 	@sudo cp $(SYSTEMD_SERVICE).service $(DIRECTORY)
 	@sudo ln -fs $(DIRECTORY)/$(SYSTEMD_SERVICE).service /etc/systemd/system/$(SYSTEMD_SERVICE).service
 
+	@sudo mkdir -p $(DIRECTORY)/plugins/ServerBackup
+	@sudo cp serverbackup-config.yml    $(DIRECTORY)/plugins/ServerBackup/config.yml
+
 	@sudo systemctl enable $(SYSTEMD_SERVICE)
 
 	@echo $(SYSTEMD_SERVICE) installed
@@ -19,6 +22,7 @@ install:
 update:
 	@sudo cp docker-compose.yml         $(DIRECTORY)/docker-compose.yml
 	@sudo cp $(SYSTEMD_SERVICE).service $(DIRECTORY)
+	@sudo cp serverbackup-config.yml    $(DIRECTORY)/plugins/ServerBackup/config.yml
 
 	@sudo systemctl daemon-reload
 
