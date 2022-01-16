@@ -12,7 +12,6 @@ services:
       SPIGET_RESOURCES: 79320
     tty: true
     stdin_open: true
-    restart: unless-stopped
     volumes:
       # attach a directory relative to the directory containing this compose file
       - /opt/mcserver:/data
