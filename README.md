@@ -9,9 +9,9 @@ Based on [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft
 make install
 ```
 
-A systemd service 'docker-compose-service@minecraft-docker' and related stuffs will be installed.
+A systemd service 'mcserver' and related stuffs will be installed.
 
-The server files is located in `/opt/mcserver-docker`
+The server files is located in `/opt/mcserver`
 
 ## For me
 
