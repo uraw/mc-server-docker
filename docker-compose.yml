@@ -10,7 +10,7 @@ services:
       EULA: "TRUE"
       TYPE: SPIGOT
       SPIGET_RESOURCES: 79320
-      MEMORY: 2G
+      MEMORY: "1G"
     tty: true
     stdin_open: true
     volumes:
