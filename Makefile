@@ -1,26 +1,25 @@
 # -*- mode: Makefile -*-
 
+DIRECTORY := /opt/mcserver
+SYSTEMD_SERVICE := mcserver
+CONTAINER_NAME := mc
+
 install:
-	@sudo mkdir -p /opt/docker-compose-service/minecraft-docker/
-	@sudo cp docker-compose.yml /opt/docker-compose-service/minecraft-docker/docker-compose.yml
-	@sudo cp systemd/docker-compose-service@.service  /etc/systemd/system/
-	@sudo mkdir -p /opt/minecraft-docker
+	@sudo mkdir -p $(DIRECTORY)
+	@sudo cp docker-compose.yml $(DIRECTORY)/docker-compose.yml
+	@sudo cp $(SYSTEMD_SERVICE).service $(DIRECTORY)
+	@sudo ln -fs $(DIRECTORY)/$(SYSTEMD_SERVICE).service /etc/systemd/system/$(SYSTEMD_SERVICE).service
+	@sudo systemctl enable $(SYSTEMD_SERVICE)
+	@echo $(SYSTEMD_SERVICE).service installed
+
+update:
+	@sudo cp docker-compose.yml $(DIRECTORY)/docker-compose.yml
+	@sudo cp $(SYSTEMD_SERVICE).service $(DIRECTORY)
+	@sudo systemctl daemon-reload
+	@echo $(SYSTEMD_SERVICE).service updated
 
 uninstall:
-	@sudo rm -rf /opt/docker-compose-service/minecraft-docker/
-	@sudo rm -rf /opt/minecraft-docker
-
-enable:
-	sudo systemctl enable docker-compose-service@minecraft-docker
-
-disable:
-	sudo systemctl disable docker-compose-service@minecraft-docker
-
-status:
-	systemctl status docker-compose-service@minecraft-docker
-
-start:
-	sudo systemctl start docker-compose-service@minecraft-docker
-
-stop:
-	sudo systemctl stop docker-compose-service@minecraft-docker
+	@sudo systemctl disable $(SYSTEMD_SERVICE)
+	@sudo systemctl stop $(SYSTEMD_SERVICE)
+	@sudo docker container rm $(CONTAINER_NAME)
+	@echo $(SYSTEMD_SERVICE).service uninstalled
