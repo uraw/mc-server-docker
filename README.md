@@ -2,6 +2,11 @@
 
 Based on [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server)
 
+## Requirements
+
+- Docker
+- docker-compose
+
 
 ## Installation
 
