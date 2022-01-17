@@ -11,6 +11,7 @@ services:
       TYPE: SPIGOT
       SPIGET_RESOURCES: 79320
       MEMORY: "1G"
+      TZ: "Asia/Tokyo"
     tty: true
     stdin_open: true
     volumes:
