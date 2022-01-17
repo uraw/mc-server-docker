@@ -6,27 +6,27 @@ CONTAINER_NAME := mc
 
 install:
 	@sudo mkdir -p $(DIRECTORY)
-
-	@sudo cp docker-compose.yml         $(DIRECTORY)
-
-	@sudo cp $(SYSTEMD_SERVICE).service $(DIRECTORY)
-	@sudo ln -fs $(DIRECTORY)/$(SYSTEMD_SERVICE).service /etc/systemd/system/$(SYSTEMD_SERVICE).service
-
 	@sudo mkdir -p $(DIRECTORY)/plugins/ServerBackup
-	@sudo cp serverbackup-config.yml    $(DIRECTORY)/plugins/ServerBackup/config.yml
+
+	@$(MAKE) copyfiles
+
+	@sudo ln -fs $(DIRECTORY)/$(SYSTEMD_SERVICE).service /etc/systemd/system/$(SYSTEMD_SERVICE).service
 
 	@sudo systemctl enable $(SYSTEMD_SERVICE)
 
 	@echo $(SYSTEMD_SERVICE) installed
 
 update:
-	@sudo cp docker-compose.yml         $(DIRECTORY)/docker-compose.yml
-	@sudo cp $(SYSTEMD_SERVICE).service $(DIRECTORY)
-	@sudo cp serverbackup-config.yml    $(DIRECTORY)/plugins/ServerBackup/config.yml
+	@$(MAKE) copyfiles
 
 	@sudo systemctl daemon-reload
 
 	@echo $(SYSTEMD_SERVICE) updated
+
+copyfiles:
+	@sudo cp docker-compose.yml         $(DIRECTORY)
+	@sudo cp $(SYSTEMD_SERVICE).service $(DIRECTORY)
+	@sudo cp serverbackup-config.yml    $(DIRECTORY)/plugins/ServerBackup/config.yml
 
 uninstall:
 	@sudo systemctl disable $(SYSTEMD_SERVICE)
