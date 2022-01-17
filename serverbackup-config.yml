@@ -16,7 +16,7 @@ BackupTimer:
   - SATURDAY
   - SUNDAY
   Times:
-  - 19-01
+  - 04-00
 BackupWorlds:
 - kitakata
 - kitakata_nether
