@@ -14,5 +14,7 @@ ExecStart=/usr/local/bin/docker-compose -f ${COMPOSE_FILE} up
 ExecStop=/usr/bin/docker exec ${CONTAINER_NAME} rcon-cli stop
 ExecStop=/usr/local/bin/docker-compose -f ${COMPOSE_FILE} down
 
+Restart=always
+
 [Install]
 WantedBy=multi-user.target
