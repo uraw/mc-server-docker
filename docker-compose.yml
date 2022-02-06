@@ -10,7 +10,9 @@ services:
       EULA: "TRUE"
       TYPE: SPIGOT
       SPIGET_RESOURCES: 79320
-      MEMORY: "1G"
+      # https://qiita.com/STSynthe/items/28fa9edac587ec6e0414
+      INIT_MEMORY: "1G"
+      MAX_MEMORY: "2G"
       TZ: "Asia/Tokyo"
     tty: true
     stdin_open: true
