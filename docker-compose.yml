@@ -8,7 +8,7 @@ services:
       - 25565:25565
     environment:
       EULA: "TRUE"
-      TYPE: SPIGOT
+      TYPE: PAPER
       SPIGET_RESOURCES: 79320
       # https://qiita.com/STSynthe/items/28fa9edac587ec6e0414
       INIT_MEMORY: "1G"
